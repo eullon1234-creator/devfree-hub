@@ -1251,5 +1251,287 @@ await fetch(webhookUrl, {
     },
     tips: 'Você pode usar o Discord como um centro de notificações gratuito para logs de erro, vendas e novos cadastros da sua aplicação.',
     addedAt: '2026-02-04'
+  },
+  // --- NOVA RODADA DE APIS DE ALTO VALOR ---
+  {
+    id: 'assembly-ai',
+    name: 'AssemblyAI',
+    tagline: 'Transcrição de áudio para texto com IA, identificação de locutores e análise de sentimento',
+    description: 'Modelos de Speech-to-Text de altíssima precisão treinados especificamente para transcrição de podcasts, reuniões, vídeos do YouTube e chamadas telefônicas com detecção automática de quem está falando (speaker diarization).',
+    category: 'ai',
+    tags: ['Transcrição', 'Speech to Text', 'Áudio', 'Diarização', 'IA'],
+    websiteUrl: 'https://www.assemblyai.com',
+    docsUrl: 'https://www.assemblyai.com/docs',
+    pricingUrl: 'https://www.assemblyai.com/pricing',
+    requiresCreditCard: false,
+    hasApi: true,
+    starsRating: 4.9,
+    isPopular: true,
+    isFeatured: true,
+    freeTierDetails: {
+      quota: '100 horas de transcrição gratuitas no cadastro de desenvolvedor',
+      highlights: [
+        'Sem cartão para iniciar a conta de desenvolvedor',
+        'Modelo Conformer-2 com pontuação e acentuação precisas',
+        'Identificação automática de múltiplos locutores (Speaker Diarization)',
+        'SDK oficial para TypeScript/Node.js e Python com suporte a streaming'
+      ],
+      resetPeriod: 'Crédito Inicial',
+      limitations: 'Crédito generoso para até 100 horas de processamento de áudio'
+    },
+    codeSnippet: {
+      language: 'javascript',
+      title: 'Transcrevendo áudio com AssemblyAI SDK',
+      code: `import { AssemblyAI } from 'assemblyai';
+
+const client = new AssemblyAI({ apiKey: process.env.ASSEMBLYAI_API_KEY });
+const audioUrl = 'https://storage.googleapis.com/aai-web-samples/espn-bears.m4a';
+
+const transcript = await client.transcripts.transcribe({
+  audio: audioUrl,
+  speaker_labels: true // Separa quem falou cada frase!
+});
+
+console.log("Texto transcrito:", transcript.text);`
+    },
+    tips: 'Excelente para criar ferramentas de resumo de reuniões do Meet/Zoom e legendas automáticas de vídeos.',
+    addedAt: '2026-02-05'
+  },
+  {
+    id: 'tavily-ai',
+    name: 'Tavily Search API',
+    tagline: 'O motor de busca na web projetado especificamente para agentes de IA e sistemas RAG',
+    description: 'Diferente do Google ou Bing tradicional, a Tavily extrai, limpa e sumariza o conteúdo factual das páginas da internet, devolvendo respostas contextualizadas e sem poluição de anúncios para alimentar prompts de LLMs.',
+    category: 'ai',
+    tags: ['Busca Web', 'RAG', 'Agentes IA', 'LLM Search'],
+    websiteUrl: 'https://tavily.com',
+    docsUrl: 'https://docs.tavily.com',
+    pricingUrl: 'https://tavily.com/#pricing',
+    requiresCreditCard: false,
+    hasApi: true,
+    starsRating: 4.9,
+    isPopular: true,
+    freeTierDetails: {
+      quota: '1.000 buscas na web por mês 100% gratuitas',
+      highlights: [
+        'Sem cartão de crédito necessário',
+        'Busca em tempo real com limpeza de HTML, anúncios e rastreadores',
+        'Retorna respostas prontas e trechos relevantes para RAG',
+        'Integração oficial com LangChain, LlamaIndex e CrewAI'
+      ],
+      resetPeriod: 'Mensal'
+    },
+    codeSnippet: {
+      language: 'javascript',
+      title: 'Busca em tempo real na web para IA com Tavily',
+      code: `const response = await fetch("https://api.tavily.com/search", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    api_key: process.env.TAVILY_API_KEY,
+    query: "Quais são os lançamentos mais recentes de modelos de IA este mês?",
+    search_depth: "basic",
+    include_answer: true
+  })
+});
+const data = await response.json();
+console.log("Resposta resumida:", data.answer);
+console.log("Fontes encontradas:", data.results);`
+    },
+    tips: 'A propriedade "include_answer: true" já retorna um resumo conciso pronto para ser injetado no contexto do seu chatbot.',
+    addedAt: '2026-02-05'
+  },
+  {
+    id: 'tidb-serverless',
+    name: 'TiDB Cloud Serverless',
+    tagline: 'MySQL distribuído elástico com 5 GB de armazenamento permanente gratuito',
+    description: 'Banco de dados relacional distribuído 100% compatível com a sintaxe do MySQL, oferecendo suporte nativo tanto para transações ACID (OLTP) quanto consultas analíticas em tempo real (OLAP) em uma única plataforma.',
+    category: 'database',
+    tags: ['MySQL', 'SQL Distribuído', 'HTAP', 'Serverless', '5GB Grátis'],
+    websiteUrl: 'https://www.pingcap.com/tidb-cloud',
+    docsUrl: 'https://docs.pingcap.com/tidbcloud',
+    pricingUrl: 'https://www.pingcap.com/pricing',
+    requiresCreditCard: false,
+    hasApi: true,
+    starsRating: 4.8,
+    freeTierDetails: {
+      quota: '5 GB de dados e até 50 milhões de Request Units (RU) por mês',
+      highlights: [
+        'Totalmente compatível com clientes MySQL (mysql2, Prisma, Drizzle, TypeORM)',
+        'Nunca expira e não pede cartão de crédito',
+        'Escala automática para acomodar picos de tráfego',
+        'Painel integrado para monitorar queries lentas'
+      ],
+      resetPeriod: 'Mensal'
+    },
+    tips: 'A melhor alternativa gratuita para quem já tem projetos baseados em MySQL e quer migrar para um banco distribuído sem alterar queries.',
+    addedAt: '2026-02-06'
+  },
+  {
+    id: 'qrcode-generator-api',
+    name: 'QR Code Generator API',
+    tagline: 'Geração instantânea de QR Codes customizados via URL direta sem token',
+    description: 'Serviço HTTP ultra-rápido para renderizar QR Codes em formato SVG ou PNG simplesmente chamando uma URL com os parâmetros de dados, tamanho, cor e margem.',
+    category: 'image_media',
+    tags: ['QR Code', 'SVG', '100% Grátis', 'Sem API Key', 'Pix'],
+    websiteUrl: 'https://goqr.me/api',
+    docsUrl: 'https://goqr.me/api/doc',
+    pricingUrl: 'https://goqr.me',
+    requiresCreditCard: false,
+    hasApi: true,
+    starsRating: 4.8,
+    freeTierDetails: {
+      quota: 'Ilimitado e 100% gratuito sem qualquer autenticação',
+      highlights: [
+        'Sem cadastro e sem chave de API',
+        'Suporte a formatos vetoriais SVG nítidos para impressão',
+        'Parâmetros para customizar cores de fundo e do código',
+        'Gera QR Code de pagamentos Pix Copia e Cola instantaneamente'
+      ],
+      resetPeriod: 'Ilimitado'
+    },
+    codeSnippet: {
+      language: 'javascript',
+      title: 'Gerando QR Code Pix ou Link em SVG',
+      code: `const data = encodeURIComponent("https://seusite.com.br/checkout/pedido-123");
+// Gera um QR Code de 300x300 em formato SVG transparente:
+const qrUrl = \`https://api.qrserver.com/v1/create-qr-code/?size=300x300&format=svg&data=\${data}\`;
+
+console.log("URL direta do QR Code:", qrUrl);`
+    },
+    tips: 'Use "format=svg" para obter um QR code que não perde qualidade mesmo se ampliado em impressões ou telas retina.',
+    addedAt: '2026-02-06'
+  },
+  {
+    id: 'koyeb-hosting',
+    name: 'Koyeb',
+    tagline: 'Hospedagem serverless de containers Docker e microsserviços com SSL automático',
+    description: 'Plataforma em nuvem moderna para rodar APIs, backends em Node.js, Go, Python, Rust ou qualquer container Docker com deploy global, balanceamento de carga e certificados TLS.',
+    category: 'hosting',
+    tags: ['Docker', 'Containers', 'Backend', 'Serverless', 'Microserviços'],
+    websiteUrl: 'https://www.koyeb.com',
+    docsUrl: 'https://www.koyeb.com/docs',
+    pricingUrl: 'https://www.koyeb.com/pricing',
+    requiresCreditCard: false,
+    hasApi: true,
+    starsRating: 4.7,
+    freeTierDetails: {
+      quota: '2 serviços Nano gratuitos permanentes (512MB RAM, 0.1 vCPU cada)',
+      highlights: [
+        'Sem cartão para criar conta no tier Eco/Free',
+        'Deploy contínuo via GitHub ou registro Docker público/privado',
+        'SSL automático e domínios personalizados gratuitos',
+        'Health checks nativos e restart automático em caso de crash'
+      ],
+      resetPeriod: 'Mensal'
+    },
+    tips: 'Diferente do Render que desliga apps após 15 minutos, instâncias no Koyeb permanecem ativas com tempo de resposta estável.',
+    addedAt: '2026-02-07'
+  },
+  {
+    id: 'dummyjson-api',
+    name: 'DummyJSON',
+    tagline: 'A API Mock REST mais completa para prototipagem de front-ends e e-commerces',
+    description: 'Fornece endpoints REST ricos com suporte a CRUD completo (GET, POST, PUT, DELETE) para produtos com imagens reais, categorias, carrinhos de compras, usuários, comentários, posts e autenticação JWT mockada.',
+    category: 'apis_data',
+    tags: ['Mock API', 'E-commerce', 'Produtos', 'Auth Mock', 'Sem Token'],
+    websiteUrl: 'https://dummyjson.com',
+    docsUrl: 'https://dummyjson.com/docs',
+    pricingUrl: 'https://dummyjson.com',
+    requiresCreditCard: false,
+    hasApi: true,
+    starsRating: 5.0,
+    isPopular: true,
+    isFeatured: true,
+    freeTierDetails: {
+      quota: 'Totalmente gratuito e ilimitado sem cadastro',
+      highlights: [
+        'Sem chave de API e sem burocracia',
+        'Mais de 100 produtos reais categorizados com preços, notas e fotos',
+        'Simulação de login com geração de tokens JWT reais para testes de auth',
+        'Suporte a paginação, buscas por termo e filtros por categoria'
+      ],
+      resetPeriod: 'Ilimitado'
+    },
+    codeSnippet: {
+      language: 'javascript',
+      title: 'Buscando produtos e simulando compra',
+      code: `// Listar os primeiros 10 produtos de smartphones
+const response = await fetch('https://dummyjson.com/products/category/smartphones?limit=10');
+const data = await response.json();
+
+console.log("Produtos encontrados:", data.products);`
+    },
+    tips: 'Perfeito para quando você precisa testar componentes de listagem, paginação, filtros e checkout sem ter que criar o backend primeiro.',
+    addedAt: '2026-02-07'
+  },
+  {
+    id: 'exchangerate-api',
+    name: 'ExchangeRate-API',
+    tagline: 'Cotações de moedas mundiais e conversão de câmbio em tempo real',
+    description: 'API confiável de câmbio que fornece cotações diárias de mais de 160 moedas internacionais (USD, BRL, EUR, GBP, JPY) com latência baixa e uptime comprovado de 99.99%.',
+    category: 'apis_data',
+    tags: ['Câmbio', 'Moedas', 'Dólar', 'Finanças', 'Conversão'],
+    websiteUrl: 'https://www.exchangerate-api.com',
+    docsUrl: 'https://www.exchangerate-api.com/docs/overview',
+    pricingUrl: 'https://www.exchangerate-api.com/#pricing',
+    requiresCreditCard: false,
+    hasApi: true,
+    starsRating: 4.8,
+    freeTierDetails: {
+      quota: '1.500 requisições de conversão por mês no plano Free',
+      highlights: [
+        'Sem necessidade de cartão de crédito',
+        'Suporte a 161 moedas globais incluindo o Real (BRL)',
+        'Respostas compactas em JSON ideais para cache',
+        'Atualização diária das taxas de câmbio oficiais'
+      ],
+      resetPeriod: 'Mensal'
+    },
+    codeSnippet: {
+      language: 'javascript',
+      title: 'Consultando cotação de USD para BRL',
+      code: `const response = await fetch("https://v6.exchangerate-api.com/v6/SUA_KEY/pair/USD/BRL");
+const data = await response.json();
+
+console.log(\`1 Dólar equivale a R$ \${data.conversion_rate.toFixed(2)}\`);`
+    },
+    tips: 'Faça cache do resultado por 12 ou 24 horas no seu backend para economizar chamadas da cota mensal.',
+    addedAt: '2026-02-08'
+  },
+  {
+    id: 'poke-api',
+    name: 'PokéAPI',
+    tagline: 'A API pública mais querida da web para aprendizado e testes de frontend',
+    description: 'Banco de dados GraphQL e REST completo sobre Pokémons, incluindo habilidades, tipos, estatísticas de combate, evoluções e sprites em alta definição. Perfeita para aprender consumo de APIs.',
+    category: 'apis_data',
+    tags: ['PokéAPI', 'Sprites', 'Open Data', 'REST', 'GraphQL'],
+    websiteUrl: 'https://pokeapi.co',
+    docsUrl: 'https://pokeapi.co/docs/v2',
+    pricingUrl: 'https://pokeapi.co',
+    requiresCreditCard: false,
+    hasApi: true,
+    starsRating: 5.0,
+    isPopular: true,
+    freeTierDetails: {
+      quota: 'Totalmente gratuita, aberta e sem limites razoáveis de consumo',
+      highlights: [
+        'Sem cadastro, sem API key e sem cartão',
+        'Mais de 1.000 monstrinhos com sprites animados e oficiais em alta resolução',
+        'Suporte a paginação e consultas avançadas via GraphQL'
+      ],
+      resetPeriod: 'Ilimitado'
+    },
+    codeSnippet: {
+      language: 'javascript',
+      title: 'Consultando detalhes e imagem de um Pokémon',
+      code: `const res = await fetch("https://pokeapi.co/api/v2/pokemon/pikachu");
+const pikachu = await res.json();
+
+console.log("Nome:", pikachu.name);
+console.log("Sprite:", pikachu.sprites.other["official-artwork"].front_default);`
+    },
+    tips: 'Use os sprites da propriedade "other.official-artwork" para ter ilustrações de alta resolução e com fundo transparente.',
+    addedAt: '2026-02-08'
   }
 ];
