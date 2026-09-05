@@ -6,7 +6,8 @@ export type CategoryId =
   | 'hosting'
   | 'auth'
   | 'email_messaging'
-  | 'apis_data';
+  | 'apis_data'
+  | 'payments';
 
 export interface Category {
   id: CategoryId;
@@ -47,5 +48,38 @@ export interface ToolItem {
   isFeatured?: boolean;
   codeSnippet?: CodeSnippet;
   tips?: string;
+  addedAt: string;
+}
+
+export type PricingModel = 'pay_as_you_go' | 'subscription' | 'transaction_fee' | 'credits';
+
+export interface PricingTier {
+  name: string;
+  price: string;
+  period?: string; // '/mês', 'por 1M tokens', 'por transação', etc.
+  description?: string;
+  features: string[];
+  isPopular?: boolean;
+}
+
+export interface PaidToolItem {
+  id: string;
+  name: string;
+  tagline: string;
+  description: string;
+  category: CategoryId;
+  tags: string[];
+  websiteUrl: string;
+  docsUrl?: string;
+  pricingUrl: string;
+  pricingModel: PricingModel;
+  startingPrice: string;
+  pricingTiers: PricingTier[];
+  starsRating: number;
+  isPopular?: boolean;
+  isFeatured?: boolean;
+  codeSnippet?: CodeSnippet;
+  tips?: string;
+  hasFreeTrialOrCredits?: string;
   addedAt: string;
 }

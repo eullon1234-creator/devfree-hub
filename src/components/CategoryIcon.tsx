@@ -8,7 +8,8 @@ import {
   ShieldCheck, 
   Mail, 
   Globe,
-  Sparkles
+  Sparkles,
+  CreditCard
 } from 'lucide-react';
 import type { CategoryId } from '../types/tool';
 
@@ -35,6 +36,8 @@ export const CategoryIcon: React.FC<CategoryIconProps> = ({ category, className 
       return <Mail className={className} />;
     case 'apis_data':
       return <Globe className={className} />;
+    case 'payments':
+      return <CreditCard className={className} />;
     default:
       return <Sparkles className={className} />;
   }
